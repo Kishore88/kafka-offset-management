@@ -105,11 +105,11 @@ class SparkUtils(properties: Properties) extends Serializable {
    *  @param topic topic name from where to read
    *    
    */
-  def createKafkaStream[K: ClassTag, V: ClassTag, KD <: Decoder[K]: ClassTag, VD <: Decoder[V]: ClassTag](ssc: StreamingContext, kafkaParams: Map[String, String], offsetsStore: OffsetsStore, topic: String,topic_tail:String): InputDStream[(K, V)] = {
+  def createKafkaStream[K: ClassTag, V: ClassTag, KD <: Decoder[K]: ClassTag, VD <: Decoder[V]: ClassTag](ssc: StreamingContext, kafkaParams: Map[String, String], offsetsStore: OffsetsStore, topic: String): InputDStream[(K, V)] = {
 
     val topics = Set(topic)
 
-    val storedOffsets = offsetsStore.readOffsets(topic,topic_tail)
+    val storedOffsets = offsetsStore.readOffsets(topic)
     val kafkaStream = storedOffsets match {
       case None =>
         // start from the latest offsets

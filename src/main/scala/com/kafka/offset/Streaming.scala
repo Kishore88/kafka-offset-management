@@ -36,7 +36,7 @@ object Parser {
       // environment variable
       val databaseName = properties.getProperty("jdbcDatabase")
       val offsetStore = new MySqlOffsetsStore(properties.getProperty("jdbcUsername"), properties.getProperty("jdbcPassword"), properties.getProperty("jdbcHostname"), properties.getProperty("jdbcPort").toInt, databaseName)
-      val dataStream = su.createKafkaStream[String, String, StringDecoder, StringDecoder](ssc, kafkaParams, offsetStore, topic, "")
+      val dataStream = su.createKafkaStream[String, String, StringDecoder, StringDecoder](ssc, kafkaParams, offsetStore, topic)
       val propertiesBroadcast = dataStream.context.sparkContext.broadcast(properties)
 
       val mappedDataStream = dataStream.map(_._2)
