@@ -13,7 +13,7 @@ import org.apache.spark.streaming.dstream.InputDStream
 import org.apache.spark.streaming.kafka.KafkaUtils
 import org.json4s.DefaultFormats
 
-import com.rockwell.twb.stores.OffsetsStore
+import com.kafka.offset.stores.OffsetsStore
 
 import kafka.message.MessageAndMetadata
 import kafka.serializer.Decoder
