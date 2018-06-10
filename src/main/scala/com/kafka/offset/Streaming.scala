@@ -3,8 +3,8 @@ package com.kafka.offset
 import java.io.FileInputStream
 import java.util.Properties
 
-import com.rockwell.twb.stores.MySqlOffsetsStore
-import com.rockwell.twb.util.SparkUtils
+import com.kafka.offset.stores.MySqlOffsetsStore
+import com.kafka.offset.util.SparkUtils
 
 import _root_.kafka.serializer.StringDecoder
 
